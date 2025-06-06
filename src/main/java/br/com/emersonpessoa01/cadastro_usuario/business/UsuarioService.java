@@ -16,5 +16,8 @@ public class UsuarioService {
         repository.saveAndFlush(usuario);
         return usuario;
     }
+    public Usuario buscarUsuarioPorEmail(String email) {
+        return repository.findByEmail(email).orElseThrow(()-> new RuntimeException("Usuário não encontrado com o email: " + email));
+    }
 
 }
