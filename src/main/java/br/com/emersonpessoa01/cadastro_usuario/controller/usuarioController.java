@@ -34,7 +34,4 @@ public class usuarioController {
         usuarioService.atualizarUsuarioPorId(id, usuario);
         return ResponseEntity.ok().build();
     }
-
-
-}
 }
