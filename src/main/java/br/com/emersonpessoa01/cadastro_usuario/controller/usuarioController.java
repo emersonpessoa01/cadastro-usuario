@@ -20,4 +20,9 @@ public class usuarioController {
     public ResponseEntity<Usuario> bucarUsuarioPorEmail(@RequestParam String email){
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
+    @DeleteMapping
+    public ResponseEntity<Void> deletarUsuarioPorEmail(@RequestParam String email){
+        usuarioService.deletarUsuarioPorEmail(email);
+        return ResponseEntity.ok().build();
+    }
 }
