@@ -2,7 +2,6 @@ package br.com.emersonpessoa01.cadastro_usuario.business;
 
 import br.com.emersonpessoa01.cadastro_usuario.infraestruture.entitys.Usuario;
 import br.com.emersonpessoa01.cadastro_usuario.infraestruture.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,7 +27,6 @@ public class UsuarioService {
         repository.deleteByEmail(email);
     }
 
-    //Faça uma breve explicação do que o método abaixo faz
     // O método atualizarUsuarioPorId recebe um ID e um objeto Usuario, busca o usuário existente pelo ID,
     // e atualiza os campos email e nome com os valores do objeto Usuario, se eles não forem nulos.
 
