@@ -20,9 +20,10 @@ public class UsuarioService {
         return usuario;
     }
 
-//    public Usuario buscarUsuarioPorEmail(String email) {
-//        return repository.findByEmail(email).orElseThrow(() -> new RuntimeException("Usuário não encontrado com o email: " + email));
-//    }
+    //        public Usuario buscarUsuarioPorEmail(String email) {
+    //            return repository.findByEmail(email)
+    //            .orElseThrow(() -> new RuntimeException("Usuário não encontrado com o email: " + email));
+    //        }
 
     // Método que busca todos os usuários cadastrados
     public ResponseEntity<?> buscarTodosUsuarios() {
@@ -38,16 +39,10 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado com o ID: " + id));
     }
 
-
-
-
-
-//    public void deletarUsuarioPorEmail(String email) {
-//
-//        repository.deleteByEmail(email);
-//    }
+    //  public void deletarUsuarioPorEmail(String email) {
+    //    repository.deleteByEmail(email);
+    //  }
     // Método que delta por ID, se não encontrar lança uma exceção RuntimeException
-
     public void deletarUsuarioPorId(Long id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Usuário não encontrado com o ID: " + id);
@@ -59,7 +54,7 @@ public class UsuarioService {
     // O método atualizarUsuarioPorId recebe um ID e um objeto Usuario, busca o usuário existente pelo ID,
     // e atualiza os campos email e nome com os valores do objeto Usuario, se eles não forem nulos.
 
-public void atualizarUsuarioPorId(Long id, Usuario usuario) {
+    public void atualizarUsuarioPorId(Long id, Usuario usuario) {
         Usuario usuarioEntity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado com o ID: " + id));
 
@@ -68,7 +63,4 @@ public void atualizarUsuarioPorId(Long id, Usuario usuario) {
 
         repository.saveAndFlush(usuarioEntity);
     }
-
-
-
 }
