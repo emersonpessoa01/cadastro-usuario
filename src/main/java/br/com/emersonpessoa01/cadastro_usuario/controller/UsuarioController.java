@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
-public class usuarioController {
+public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
@@ -19,19 +19,24 @@ public class usuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> bucarUsuarioPorEmail(@RequestParam String email) {
-        return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
+    public ResponseEntity<?> buscarTodosUsuarios() {
+        return usuarioService.buscarTodosUsuarios();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deletarUsuarioPorEmail(@RequestParam String email) {
-        usuarioService.deletarUsuarioPorEmail(email);
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Long id){
+        return ResponseEntity.ok(usuarioService.buscarUsuarioPorId(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> atualizarUsuarioPorId(@PathVariable Long id, @RequestBody Usuario usuario) {
+        usuarioService.atualizarUsuarioPorId(id, usuario);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Void> atualizarUsuarioPorId(@RequestParam Integer id, @RequestBody Usuario usuario) {
-        usuarioService.atualizarUsuarioPorId(id, usuario);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarUsuarioPorId(@PathVariable Long id) {
+        usuarioService.deletarUsuarioPorId(id);
         return ResponseEntity.ok().build();
     }
 }
